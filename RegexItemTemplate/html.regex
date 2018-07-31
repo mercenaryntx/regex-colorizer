@@ -1,0 +1,34 @@
+﻿(?xi)
+
+^(?&TAG)$                   # Just call the TAG subroutine
+
+(?(DEFINE)
+    (?<TAG>                 # The TAG 'subroutine'...
+        <(?&NAME)\s*\/>     # Empty tag
+        |                   # OR
+        <                   # Opening angle
+        (?&NAME)            # Tag name
+        (?:                 # Then start a loop for attributes...
+            \s*             # whitespace
+            (?&ATTRIBUTE)   # Then call the ATTRIBUTE sub
+        )*+                 # End of loop (possessive)
+        >                   # Closing angle
+        (?:                 # Then start a loop for content...
+        [^<]*?              # Inner text
+        (?&TAG)             # Child node
+        )*+                 # End of loop (possessive)
+        [^<]*?              # Inner text
+        <\/(?&NAME)>        # Closing tag
+    )                       # End of TAG definition
+
+    (?<NAME>                # The NAME 'subroutine'...
+        [a-z][a-z0-9]*      # Loop, matching alphanumeric characters
+    )                       # End of NAME definition
+
+    (?<ATTRIBUTE>           # The ATTRIBUTE 'subroutine'...
+        [a-z][a-z0-9]*      # Attribute Name
+        ="                  # Assignment
+        [^"]*               # Attribute Value
+        "                   # Closing quotation mark
+    )                       # End of ATTRIBUTE definition
+)

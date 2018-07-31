@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Regular Expression</Name>
+    <Description>PCRE Regular Expression</Description>
+    <Icon>RegexItemTemplate.ico</Icon>
+    <TemplateID>Microsoft.CSharp.RegularExpression</TemplateID>
+    <TemplateGroupID>General</TemplateGroupID>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>General</ProjectSubType>
+    <DefaultName>Regex.regex</DefaultName>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" ItemType="EmbeddedResource">html.regex</ProjectItem>
+  </TemplateContent>
+</VSTemplate>
